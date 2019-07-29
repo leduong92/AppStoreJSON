@@ -14,14 +14,15 @@ struct SearchResult: Decodable {
 }
 
 struct Result: Decodable {
+    let trackId: Int
     let trackName: String
     let primaryGenreName: String
     var averageUserRating: Float?
     let screenshotUrls: [String]
     let artworkUrl100: String
-    let formattedPrice: String
+    var formattedPrice: String? //fix data canot comback
     let description: String
-    let releaseNotes: String
+    var releaseNotes: String?
     
 }
 
