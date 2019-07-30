@@ -10,14 +10,14 @@ import UIKit
 
 class AppFullscreenController: UITableViewController {
     
-    var dismissHandler: (() ->())?
-    var todayItem: TodayItem?
+    var dismissHandler: (() ->())? //invoke dismiss qa day
+    var todayItem: TodayItem?  //lay du lieu
     
     let cellId = "cellId"
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView() //bo cac line khong dung o tableview
         tableView.separatorStyle = .none
         tableView.allowsSelection = false //cho phep click vao table view
         
@@ -28,17 +28,17 @@ class AppFullscreenController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.item == 0 {
+        if indexPath.item == 0 { //top section
             let headerCell = AppFullscreenHeaderCell()
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
-            headerCell.todayCell.todayItem = todayItem
+            headerCell.todayCell.todayItem = todayItem //fix todaycell image luc click vao cell  hinh khong render
             return headerCell
         }
-        let cell = AppFullscreenDescriptionCell()
+        let cell = AppFullscreenDescriptionCell() //
         return cell
     }
     
-    @objc fileprivate func handleDismiss(button: UIButton) {
+    @objc fileprivate func handleDismiss(button: UIButton) { //dismiss tableview contrller
         button.isHidden = true
         dismissHandler?()
     }

@@ -20,7 +20,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.isNavigationBarHidden = true
+        navigationController?.isNavigationBarHidden = true //an? title cua navigation bar
         
         collectionView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         collectionView.register(TodayCell.self, forCellWithReuseIdentifier: cellId)
@@ -37,14 +37,14 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let appFullscreenController = AppFullscreenController()
+        
         appFullscreenController.todayItem = items[indexPath.row] // pass du lieu thong qa model
+        
         appFullscreenController.dismissHandler = { //bam nut close button thi tat
             self.handleRemoveRedView()
         }
         
         let fullscreenView = appFullscreenController.view!
-        
-//        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))
         
         view.addSubview(fullscreenView)
         
@@ -52,11 +52,11 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         self.appFullscreenController = appFullscreenController
         
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        print(cell.frame)
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return } //CollectionViewCell luc click
+//        print(cell.frame)
         
         //absolute coordindates of cell
-        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
+        guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return } //khi dismis thi tableviewcontroller se tro ve nam trong collectionviewCell
         
         self.startingFrame = startingFrame
         
@@ -70,7 +70,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         heightConstraint = fullscreenView.heightAnchor.constraint(equalToConstant: startingFrame.height)
         
         [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
-        self.view.layoutIfNeeded()
+        self.view.layoutIfNeeded() //animation
         
         fullscreenView.layer.cornerRadius = 16
         
@@ -84,19 +84,19 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.view.layoutIfNeeded() // starts animation
             
-            self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
+            self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100) //an? tabar khi show fullscreen
             
             
         }, completion: nil)
     }
     
-    var startingFrame: CGRect?
+    var startingFrame: CGRect? //dung de luu lai toa do cua CollectionViewCell
     
     @objc fileprivate func handleRemoveRedView() {
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
 
-            self.appFullscreenController.tableView.contentOffset = .zero
+            self.appFullscreenController.tableView.contentOffset = .zero //quay lai trong collectionview cell
             
             guard let startingFrame = self.startingFrame else { return }
             
@@ -107,12 +107,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.view.layoutIfNeeded()
             
-            self.tabBarController?.tabBar.transform = .identity
+            self.tabBarController?.tabBar.transform = .identity //hien lai tabar khi dismis
             
             
         }, completion: {_ in
-            self.appFullscreenController.view.removeFromSuperview()
-            self.appFullscreenController.removeFromParent()
+            self.appFullscreenController.view.removeFromSuperview() //remove de tranh memory leak
+            self.appFullscreenController.removeFromParent() //remove de tranh memory leak
             
         })
         
@@ -131,11 +131,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.frame.width - 64, height: 450)
     }
-    
+    //ham nay dung de dan khoang cach giua cac cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 32
     }
     
+    //ham nay dung de canh padding cho collectionview
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 32, left: 0, bottom: 32, right: 0)
     }

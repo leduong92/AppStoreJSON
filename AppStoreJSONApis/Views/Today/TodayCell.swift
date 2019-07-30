@@ -10,7 +10,7 @@ import UIKit
 
 class TodayCell: UICollectionViewCell {
     
-    var todayItem: TodayItem! {
+    var todayItem: TodayItem! {//properties observer
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
@@ -30,7 +30,7 @@ class TodayCell: UICollectionViewCell {
         
         backgroundColor = .white
         clipsToBounds = true
-        layer.cornerRadius = 16
+        layer.cornerRadius = 16ß
         
         let imageContainerView = UIView()
         imageContainerView.addSubview(imageView)
