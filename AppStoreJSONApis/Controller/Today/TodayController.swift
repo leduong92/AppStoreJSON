@@ -37,10 +37,11 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let appFullscreenController = AppFullscreenController()
-        
+        appFullscreenController.todayItem = items[indexPath.row] // pass du lieu thong qa model
         appFullscreenController.dismissHandler = { //bam nut close button thi tat
             self.handleRemoveRedView()
         }
+        
         let fullscreenView = appFullscreenController.view!
         
 //        redView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleRemoveRedView)))

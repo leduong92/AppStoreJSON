@@ -29,12 +29,6 @@ class AppFullscreenController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.item == 0 {
-            //hack
-//            let cell = UITableViewCell()
-//            let todayCell = TodayCell()
-//            cell.addSubview(todayCell)
-//            todayCell.centerInSuperview(size: .init(width: 250, height: 250))
-//            return cell
             let headerCell = AppFullscreenHeaderCell()
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
             headerCell.todayCell.todayItem = todayItem
