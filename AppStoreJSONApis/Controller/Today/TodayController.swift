@@ -23,9 +23,12 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     
     var appFullscreenController: UIViewController!
+    var topConstraint: NSLayoutConstraint?
+    var leadingConstraint: NSLayoutConstraint?
+    var widthConstraint: NSLayoutConstraint?
+    var heightConstraint: NSLayoutConstraint?
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        print("animated")
         
         let appFullscreenController = AppFullscreenController()
         let redView = appFullscreenController.view!
@@ -34,7 +37,8 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         view.addSubview(redView)
         
-        addChild(appFullscreenController)
+        addChild(appFullscreenController) //de hien thi header cua tableview
+        
         self.appFullscreenController = appFullscreenController
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
@@ -45,12 +49,23 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         self.startingFrame = startingFrame
         
-        redView.frame = startingFrame
+        //auto layout
+//        redView.frame = startingFrame
+        
+        redView.translatesAutoresizingMaskIntoConstraints = false
+        topConstraint = redView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
+        leadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: startingFrame.origin.x)
+        widthConstraint = redView.widthAnchor.constraint(equalToConstant: startingFrame.width)
+        heightConstraint = redView.heightAnchor.constraint(equalToConstant: startingFrame.height)
+        
+        [topConstraint, leadingConstraint, widthConstraint, heightConstraint].forEach({$0?.isActive = true})
+        self.view.layoutIfNeeded()
+        
         redView.layer.cornerRadius = 16
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
-            redView.frame = self.view.frame
+//            redView.frame = self.view.frame
             
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
             
