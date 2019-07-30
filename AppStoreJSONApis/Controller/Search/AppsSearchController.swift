@@ -67,6 +67,11 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
             
             // this will actually fire my search
             Service.shared.fetchApps(searchTerm: searchText) { (res, err) in
+                
+                if let err = err {
+                    print("Failed to fetch apps:", err)
+                    return
+                }
                 self.appResults = res?.results ?? []
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()

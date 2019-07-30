@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AC2B16BC259A8AD800C00603 /* Pods_AppStoreJSONApis.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1C13DBE04CF742AAD283ECD /* Pods_AppStoreJSONApis.framework */; };
+		FA0A606B22F06FF300253A61 /* AppFullscreenDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0A606A22F06FF300253A61 /* AppFullscreenDescriptionCell.swift */; };
 		FA1A656422EDCF4300372A41 /* SocialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A656322EDCF4300372A41 /* SocialApp.swift */; };
 		FA1A656622EDD94200372A41 /* HorizontalSnappingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A656522EDD94200372A41 /* HorizontalSnappingController.swift */; };
 		FA1A656822EDDD3700372A41 /* BetterSnappingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1A656722EDDD3700372A41 /* BetterSnappingLayout.swift */; };
@@ -31,6 +32,9 @@
 		FAE138BD22E5F95D0061C5F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE138BB22E5F95D0061C5F8 /* LaunchScreen.storyboard */; };
 		FAE138C522E5F9840061C5F8 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE138C422E5F9840061C5F8 /* BaseTabBarController.swift */; };
 		FAE138C822E6037E0061C5F8 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE138C722E6037E0061C5F8 /* AppsSearchController.swift */; };
+		FAE601D622F063B200FD82FE /* TodayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE601D522F063B200FD82FE /* TodayController.swift */; };
+		FAE601D922F0641B00FD82FE /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE601D822F0641B00FD82FE /* TodayCell.swift */; };
+		FAE601DB22F06ACA00FD82FE /* AppFullscreenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE601DA22F06ACA00FD82FE /* AppFullscreenController.swift */; };
 		FAED25FE22E9F47700C8F517 /* AppsPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED25FD22E9F47700C8F517 /* AppsPageController.swift */; };
 		FAED260022E9F4E300C8F517 /* BaseListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED25FF22E9F4E300C8F517 /* BaseListController.swift */; };
 		FAED260422E9F60900C8F517 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAED260322E9F60900C8F517 /* AppsGroupCell.swift */; };
@@ -47,6 +51,7 @@
 		52FEC1AA7143748902CCA092 /* Pods-AppStoreJSONApis.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.release.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.release.xcconfig"; sourceTree = "<group>"; };
 		5EEED32FBC11E0C11E2244B6 /* Pods-AppStoreJSONApis.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreJSONApis.debug.xcconfig"; path = "Target Support Files/Pods-AppStoreJSONApis/Pods-AppStoreJSONApis.debug.xcconfig"; sourceTree = "<group>"; };
 		A1C13DBE04CF742AAD283ECD /* Pods_AppStoreJSONApis.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreJSONApis.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0A606A22F06FF300253A61 /* AppFullscreenDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenDescriptionCell.swift; sourceTree = "<group>"; };
 		FA1A656322EDCF4300372A41 /* SocialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialApp.swift; sourceTree = "<group>"; };
 		FA1A656522EDD94200372A41 /* HorizontalSnappingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSnappingController.swift; sourceTree = "<group>"; };
 		FA1A656722EDDD3700372A41 /* BetterSnappingLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetterSnappingLayout.swift; sourceTree = "<group>"; };
@@ -72,6 +77,9 @@
 		FAE138BE22E5F95D0061C5F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAE138C422E5F9840061C5F8 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		FAE138C722E6037E0061C5F8 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
+		FAE601D522F063B200FD82FE /* TodayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayController.swift; sourceTree = "<group>"; };
+		FAE601D822F0641B00FD82FE /* TodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		FAE601DA22F06ACA00FD82FE /* AppFullscreenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFullscreenController.swift; sourceTree = "<group>"; };
 		FAED25FD22E9F47700C8F517 /* AppsPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsPageController.swift; sourceTree = "<group>"; };
 		FAED25FF22E9F4E300C8F517 /* BaseListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseListController.swift; sourceTree = "<group>"; };
 		FAED260322E9F60900C8F517 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 		FA1E035C22E741C100191F55 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				FAE601D722F0641000FD82FE /* Today */,
 				FAED260222E9F5F600C8F517 /* Apps */,
 				FA1E035D22E741D200191F55 /* SearchResultCell.swift */,
 			);
@@ -212,6 +221,7 @@
 		FAE138C622E6035A0061C5F8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				FAE601D422F0639A00FD82FE /* Today */,
 				FAED260122E9F54E00C8F517 /* Search */,
 				FAED25FC22E9F46900C8F517 /* Apps */,
 				FAE138C422E5F9840061C5F8 /* BaseTabBarController.swift */,
@@ -219,6 +229,24 @@
 				FA1A656522EDD94200372A41 /* HorizontalSnappingController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		FAE601D422F0639A00FD82FE /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				FAE601D522F063B200FD82FE /* TodayController.swift */,
+				FAE601DA22F06ACA00FD82FE /* AppFullscreenController.swift */,
+			);
+			path = Today;
+			sourceTree = "<group>";
+		};
+		FAE601D722F0641000FD82FE /* Today */ = {
+			isa = PBXGroup;
+			children = (
+				FAE601D822F0641B00FD82FE /* TodayCell.swift */,
+				FA0A606A22F06FF300253A61 /* AppFullscreenDescriptionCell.swift */,
+			);
+			path = Today;
 			sourceTree = "<group>";
 		};
 		FAED25FC22E9F46900C8F517 /* Apps */ = {
@@ -383,6 +411,7 @@
 				FAED25FE22E9F47700C8F517 /* AppsPageController.swift in Sources */,
 				FA975A0922EF1A6A0015EC46 /* ReviewRowCell.swift in Sources */,
 				FA1E036122E743EA00191F55 /* UIView+Layout.swift in Sources */,
+				FAE601D922F0641B00FD82FE /* TodayCell.swift in Sources */,
 				FA1A656E22EDE56500372A41 /* AppDetailCell.swift in Sources */,
 				FAED260022E9F4E300C8F517 /* BaseListController.swift in Sources */,
 				FA975A0B22EF1A760015EC46 /* ReviewCell.swift in Sources */,
@@ -390,14 +419,17 @@
 				FA975A0522EF17E00015EC46 /* PreviewScreenshotsController.swift in Sources */,
 				FAE138C522E5F9840061C5F8 /* BaseTabBarController.swift in Sources */,
 				FAED260C22EA033800C8F517 /* AppsPageHeader.swift in Sources */,
+				FA0A606B22F06FF300253A61 /* AppFullscreenDescriptionCell.swift in Sources */,
 				FA975A0D22EF1A890015EC46 /* ReviewsController.swift in Sources */,
 				FAED260422E9F60900C8F517 /* AppsGroupCell.swift in Sources */,
 				FA1E036922E7510F00191F55 /* Service.swift in Sources */,
 				FA975A0F22EF1AE20015EC46 /* Reviews.swift in Sources */,
+				FAE601D622F063B200FD82FE /* TodayController.swift in Sources */,
 				FAE138C822E6037E0061C5F8 /* AppsSearchController.swift in Sources */,
 				FA1E035E22E741D200191F55 /* SearchResultCell.swift in Sources */,
 				FA1A656B22EDE21800372A41 /* AppDetailController.swift in Sources */,
 				FA1A656622EDD94200372A41 /* HorizontalSnappingController.swift in Sources */,
+				FAE601DB22F06ACA00FD82FE /* AppFullscreenController.swift in Sources */,
 				FA975A0722EF17ED0015EC46 /* PreviewCell.swift in Sources */,
 				FAED260622E9F90C00C8F517 /* AppsHorizontalController.swift in Sources */,
 				FA1E036322E746FF00191F55 /* VerticalStackView.swift in Sources */,
