@@ -36,6 +36,7 @@ class AppFullscreenController: UITableViewController {
             let headerCell = AppFullscreenHeaderCell()
             headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
             headerCell.todayCell.todayItem = todayItem //fix todaycell image luc click vao cell  hinh khong render
+            headerCell.clipsToBounds = true //fix shadow
             return headerCell
         }
         let cell = AppFullscreenDescriptionCell() //
