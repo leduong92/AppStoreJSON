@@ -304,11 +304,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             
             superview = superview?.superview
         }
-        
-        //
-        
-        
-        
     }
     
     static let cellSize: CGFloat = 500

@@ -28,7 +28,7 @@ class TodayCell: BaseTodayCell {
     let titleLabel = UILabel(text: "Utilizing your Time", font: .boldSystemFont(ofSize: 28))
     let imageView = UIImageView(image: #imageLiteral(resourceName: "garden"))
     
-        let descriptionLabel = UILabel(text: "All the tools and apps you need to intelligently organize your life the right way.", font: .systemFont(ofSize: 16), numberOfLines: 3)
+    let descriptionLabel = UILabel(text: "All the tools and apps you need to intelligently organize your life the right way.", font: .systemFont(ofSize: 16), numberOfLines: 3)
     
     var topConstraint: NSLayoutConstraint!
     
