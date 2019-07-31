@@ -8,18 +8,20 @@
 
 import UIKit
 
-class TodayCell: UICollectionViewCell {
+class TodayCell: BaseTodayCell {
     
-    var todayItem: TodayItem! {//properties observer
+    //override khi doi qua dung BaseTodayCell
+    override var todayItem: TodayItem! { //properties observer
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
             imageView.image = todayItem.image
             descriptionLabel.text = todayItem.description
             
-            backgroundColor = todayItem.backgroundColor //full background khi click vao full screen
+            backgroundColor = todayItem.backgroundColor  //full background khi click vao full screen
         }
     }
+    
     
     let categoryLabel = UILabel(text: "LIFE HACK", font: .boldSystemFont(ofSize: 20))
     let titleLabel = UILabel(text: "Utilizing your Time", font: .boldSystemFont(ofSize: 28))
