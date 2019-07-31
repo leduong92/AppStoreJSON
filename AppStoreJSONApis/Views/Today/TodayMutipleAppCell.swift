@@ -14,6 +14,9 @@ class TodayMultipleAppCell: BaseTodayCell {
         didSet {
             categoryLabel.text = todayItem.category
             titleLabel.text = todayItem.title
+            
+            multipleAppsController.results = todayItem.apps //fetch data xong gan' vao day
+            multipleAppsController.collectionView.reloadData()
         }
     }
     
@@ -28,7 +31,7 @@ class TodayMultipleAppCell: BaseTodayCell {
         backgroundColor = .white
         layer.cornerRadius = 16
         
-        multipleAppsController.view.backgroundColor = .red
+        multipleAppsController.view.backgroundColor = .red //view o giua
         
         let stackView = VerticalStackView(arrangedSubViews: [
             categoryLabel,
