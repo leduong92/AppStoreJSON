@@ -84,6 +84,8 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             self.activityIndicatorView.stopAnimating()
             
             self.items = [
+                 TodayItem.init(category: "LIFE HACK", title: "Utilizing your Time", image: #imageLiteral(resourceName: "garden"), description: "All the tools and apps you need to intelligently organize your life the right way.", backgroundColor: .white, cellType: .single, apps: []),
+                 
                 TodayItem.init(category: "Daily List", title: topGrossingGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: topGrossingGroup?.feed.results ?? []),
                 
                 TodayItem.init(category: "Daily List", title: gamesGroup?.feed.title ?? "", image: #imageLiteral(resourceName: "garden"), description: "", backgroundColor: .white, cellType: .multiple, apps: gamesGroup?.feed.results ?? []),
@@ -105,15 +107,24 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     var widthConstraint: NSLayoutConstraint?
     var heightConstraint: NSLayoutConstraint?
     
+
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if items[indexPath.item].cellType == .multiple {
-            let fullController = TodayMultipleAppsController(mode: .fullscreen)
-            fullController.apps = self.items[indexPath.item].apps
-            present(BackEnabledNavigationController(rootViewController: fullController) , animated: true)
-            return
+        switch items[indexPath.item].cellType {
+        case .multiple:
+            showDailyListFullScreen(indexPath)
+        default:
+            showSingleAppFullscreen(indexPath: indexPath)
         }
-        
+    }
+    
+    fileprivate func showDailyListFullScreen(_ indexPath: IndexPath) { //show ra  dailylist full screen
+        let fullController = TodayMultipleAppsController(mode: .fullscreen)
+        fullController.apps = self.items[indexPath.item].apps
+        present(BackEnabledNavigationController(rootViewController: fullController) , animated: true)
+    }
+    
+    fileprivate func showSingleAppFullscreen(indexPath: IndexPath) {
         let appFullscreenController = AppFullscreenController()
         appFullscreenController.todayItem = items[indexPath.row] // pass du lieu thong qa model
         appFullscreenController.dismissHandler = { //bam nut close button thi tat
@@ -130,7 +141,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         self.collectionView.isUserInteractionEnabled = false //khong cho nguoi dung select tableview
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return } //CollectionViewCell luc click
-//        print(cell.frame)
+        //        print(cell.frame)
         
         //absolute coordindates of cell
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return } //khi dismis thi tableviewcontroller se tro ve nam trong collectionviewCell
@@ -138,7 +149,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         self.startingFrame = startingFrame
         
         //auto layout
-//        redView.frame = startingFrame
+        //        redView.frame = startingFrame
         
         fullscreenView.translatesAutoresizingMaskIntoConstraints = false
         topConstraint = fullscreenView.topAnchor.constraint(equalTo: view.topAnchor, constant: startingFrame.origin.y)
@@ -153,7 +164,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
-//            redView.frame = self.view.frame
+            //            redView.frame = self.view.frame
             self.topConstraint?.constant = 0
             self.leadingConstraint?.constant = 0
             self.widthConstraint?.constant = self.view.frame.width
