@@ -123,6 +123,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
     }
     
     fileprivate func setupAppFullscreenStartingPosition(_ indexPath: IndexPath) {
+        
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
         
