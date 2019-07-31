@@ -51,6 +51,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         addChild(appFullscreenController) //de hien thi header cua tableview
         
         self.appFullscreenController = appFullscreenController
+        self.collectionView.isUserInteractionEnabled = false //khong cho nguoi dung select tableview
         
         guard let cell = collectionView.cellForItem(at: indexPath) else { return } //CollectionViewCell luc click
 //        print(cell.frame)
@@ -86,6 +87,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100) //an? tabar khi show fullscreen
             
+            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+            
+            cell.todayCell.topConstraint.constant = 48
+            cell.layoutIfNeeded()
             
         }, completion: nil)
     }
@@ -109,10 +114,15 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
             
             self.tabBarController?.tabBar.transform = .identity //hien lai tabar khi dismis
             
+            guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
+            
+            cell.todayCell.topConstraint.constant = 24
+            cell.layoutIfNeeded()
             
         }, completion: {_ in
             self.appFullscreenController.view.removeFromSuperview() //remove de tranh memory leak
             self.appFullscreenController.removeFromParent() //remove de tranh memory leak
+            self.collectionView.isUserInteractionEnabled = true //khi animate xong thi cho nguoi dung scroll
             
         })
         

@@ -21,6 +21,10 @@ class AppFullscreenController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.allowsSelection = false //cho phep click vao table view
         
+        tableView.contentInsetAdjustmentBehavior = .never //phong to het co khi full screen
+        let height = UIApplication.shared.statusBarFrame.height
+        tableView.contentInset = .init(top: 0, left: 0, bottom: height, right: 0) //day? bottom cua tableview len
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
