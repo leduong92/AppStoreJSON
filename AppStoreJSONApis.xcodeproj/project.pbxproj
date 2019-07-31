@@ -31,6 +31,7 @@
 		FAC7267222F1C9C000DF67A3 /* BaseTodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7267122F1C9C000DF67A3 /* BaseTodayCell.swift */; };
 		FAC7267422F1CB5100DF67A3 /* TodayMultipleAppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7267322F1CB5100DF67A3 /* TodayMultipleAppsController.swift */; };
 		FAC7267622F1CB7100DF67A3 /* MultipleAppCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7267522F1CB7100DF67A3 /* MultipleAppCell.swift */; };
+		FAC7267822F1E04200DF67A3 /* BackEnableNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7267722F1E04200DF67A3 /* BackEnableNavigationController.swift */; };
 		FAE138B322E5F95B0061C5F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE138B222E5F95B0061C5F8 /* AppDelegate.swift */; };
 		FAE138B522E5F95B0061C5F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE138B422E5F95B0061C5F8 /* ViewController.swift */; };
 		FAE138B822E5F95B0061C5F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE138B622E5F95B0061C5F8 /* Main.storyboard */; };
@@ -80,6 +81,7 @@
 		FAC7267122F1C9C000DF67A3 /* BaseTodayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTodayCell.swift; sourceTree = "<group>"; };
 		FAC7267322F1CB5100DF67A3 /* TodayMultipleAppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayMultipleAppsController.swift; sourceTree = "<group>"; };
 		FAC7267522F1CB7100DF67A3 /* MultipleAppCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleAppCell.swift; sourceTree = "<group>"; };
+		FAC7267722F1E04200DF67A3 /* BackEnableNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackEnableNavigationController.swift; sourceTree = "<group>"; };
 		FAE138AF22E5F95B0061C5F8 /* AppStoreJSONApis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppStoreJSONApis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAE138B222E5F95B0061C5F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAE138B422E5F95B0061C5F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				FAE601D522F063B200FD82FE /* TodayController.swift */,
 				FAE601DA22F06ACA00FD82FE /* AppFullscreenController.swift */,
 				FAC7267322F1CB5100DF67A3 /* TodayMultipleAppsController.swift */,
+				FAC7267722F1E04200DF67A3 /* BackEnableNavigationController.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -420,6 +423,7 @@
 			files = (
 				FAED260A22E9FE7A00C8F517 /* Extension.swift in Sources */,
 				FA1A656822EDDD3700372A41 /* BetterSnappingLayout.swift in Sources */,
+				FAC7267822F1E04200DF67A3 /* BackEnableNavigationController.swift in Sources */,
 				FAE138B522E5F95B0061C5F8 /* ViewController.swift in Sources */,
 				FA1A656422EDCF4300372A41 /* SocialApp.swift in Sources */,
 				FAC7267022F1C54200DF67A3 /* TodayMutipleAppCell.swift in Sources */,

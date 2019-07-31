@@ -33,6 +33,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         return aiv
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.superview?.setNeedsLayout()// fix tabbar
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,8 +109,8 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         if items[indexPath.item].cellType == .multiple {
             let fullController = TodayMultipleAppsController(mode: .fullscreen)
-            fullController.results = self.items[indexPath.item].apps
-            present(fullController, animated: true)
+            fullController.apps = self.items[indexPath.item].apps
+            present(BackEnabledNavigationController(rootViewController: fullController) , animated: true)
             return
         }
         
@@ -210,6 +214,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BaseTodayCell
         cell.todayItem = items[indexPath.item]
+        
+        //capture top
+        (cell as? TodayMultipleAppCell)?.multipleAppsController.collectionView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleMutipleAppsTap)))
+        
         return cell
         
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! TodayCell
@@ -217,8 +225,40 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout {
 //        return cell
     }
     
+    @objc fileprivate func handleMutipleAppsTap(gesture: UIGestureRecognizer) {
+        
+        let collectionView = gesture.view
+        
+        //chi ra cai cell nao ma minh click
+        
+        var superview = collectionView?.superview
+        
+        while superview != nil {
+            
+            if let cell = superview as? TodayMultipleAppCell {
+                
+                guard let indexPath = self.collectionView.indexPath(for: cell) else { return }
+                
+                let apps = self.items[indexPath.item].apps
+
+                
+                let fullController = TodayMultipleAppsController(mode: .fullscreen)
+                fullController.apps = apps
+                present(fullController, animated: true, completion: nil)
+            }
+            
+            superview = superview?.superview
+        }
+//        print(collectionView)
+        
+      
+        
+    }
+    
+    static let todayCellHeight: CGFloat = 500
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 64, height: 450)
+        return CGSize(width: view.frame.width - 64, height: TodayController.todayCellHeight)
     }
     //ham nay dung de dan khoang cach giua cac cell
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
