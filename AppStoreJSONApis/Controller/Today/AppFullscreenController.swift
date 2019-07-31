@@ -50,7 +50,7 @@ class AppFullscreenController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return TodayController.todayCellHeight
+            return TodayController.cellSize
         }
         return super.tableView(tableView, heightForRowAt: indexPath) //fix jumpy khi tapdismis
     }
