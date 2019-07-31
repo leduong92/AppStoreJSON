@@ -35,7 +35,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         blurVisualEffectView.fillSuperview()
         blurVisualEffectView.alpha = 0
         
-        
         view.addSubview(activityIndicatorView)
         activityIndicatorView.centerInSuperview()
         
@@ -119,15 +118,14 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         appFullscreenController.view.layer.cornerRadius = 16
         self.appFullscreenController = appFullscreenController
         
-        // #1 setup or pangesture
-        
+        // #1 setup our pan gesture
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
         gesture.delegate = self
         appFullscreenController.view.addGestureRecognizer(gesture)
         
         // #2 add a blue effect view
         
-        // #3 not to interfere with our UItableview
+        // #3 not to interfere with our UITableView scrolling
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -181,7 +179,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     }
     
     fileprivate func setupAppFullscreenStartingPosition(_ indexPath: IndexPath) {
-        
         let fullscreenView = appFullscreenController.view!
         view.addSubview(fullscreenView)
         
@@ -243,6 +240,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: .curveEaseOut, animations: {
             
             self.blurVisualEffectView.alpha = 0
+            self.appFullscreenController.view.transform = .identity
             
             self.appFullscreenController.tableView.contentOffset = .zero
             
@@ -257,7 +255,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             self.tabBarController?.tabBar.transform = .identity
             
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
-            
+            cell.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
             
@@ -306,6 +304,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             
             superview = superview?.superview
         }
+        
+        //
+        
+        
         
     }
     
