@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AppFullscreenController: UIViewController {
+class AppFullscreenController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var dismissHandler: (() ->())?
     var todayItem: TodayItem?
@@ -24,6 +24,14 @@ class AppFullscreenController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.clipsToBounds = true
+        
+        view.addSubview(tableView)
+        tableView.fillSuperview()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         
         setupCloseButton()
         
@@ -43,7 +51,8 @@ class AppFullscreenController: UIViewController {
     
     fileprivate func setupCloseButton() {
         view.addSubview(closeButton)
-        closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0), size: .init(width: 80, height: 40))
+        closeButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0), size: .init(width: 80, height: 40))
+        closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,7 +63,7 @@ class AppFullscreenController: UIViewController {
         
         if indexPath.item == 0 {
             let headerCell = AppFullscreenHeaderCell()
-//            headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+            
             headerCell.todayCell.todayItem = todayItem
             headerCell.todayCell.layer.cornerRadius = 0
             headerCell.clipsToBounds = true
