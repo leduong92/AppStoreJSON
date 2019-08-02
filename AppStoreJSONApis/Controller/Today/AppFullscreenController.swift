@@ -8,20 +8,24 @@
 
 import UIKit
 
-class AppFullscreenController: UITableViewController {
+class AppFullscreenController: UIViewController {
     
     var dismissHandler: (() ->())?
     var todayItem: TodayItem?
     
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y < 0 {
             scrollView.isScrollEnabled = false
             scrollView.isScrollEnabled = true
         }
     }
     
+    let tableView = UITableView(frame: .zero, style: .plain)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupCloseButton()
         
         tableView.tableFooterView = UIView()
         tableView.separatorStyle = .none
@@ -42,11 +46,11 @@ class AppFullscreenController: UITableViewController {
         closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0), size: .init(width: 80, height: 40))
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.item == 0 {
             let headerCell = AppFullscreenHeaderCell()
@@ -67,11 +71,12 @@ class AppFullscreenController: UITableViewController {
         dismissHandler?()
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return TodayController.cellSize
         }
-        return super.tableView(tableView, heightForRowAt: indexPath)
+//        return super.tableView(tableView, heightForRowAt: indexPath)
+        return UITableView.automaticDimension
     }
     
 }
