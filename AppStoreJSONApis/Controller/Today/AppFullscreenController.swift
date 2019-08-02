@@ -31,6 +31,17 @@ class AppFullscreenController: UITableViewController {
         tableView.contentInset = .init(top: 0, left: 0, bottom: height, right: 0)
     }
     
+    let closeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(#imageLiteral(resourceName: "close_button"), for: .normal)
+        return button
+    }()
+    
+    fileprivate func setupCloseButton() {
+        view.addSubview(closeButton)
+        closeButton.anchor(top: view.topAnchor, leading: nil, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 12, left: 0, bottom: 0, right: 0), size: .init(width: 80, height: 40))
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
     }
@@ -39,7 +50,7 @@ class AppFullscreenController: UITableViewController {
         
         if indexPath.item == 0 {
             let headerCell = AppFullscreenHeaderCell()
-            headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
+//            headerCell.closeButton.addTarget(self, action: #selector(handleDismiss), for: .touchUpInside)
             headerCell.todayCell.todayItem = todayItem
             headerCell.todayCell.layer.cornerRadius = 0
             headerCell.clipsToBounds = true
